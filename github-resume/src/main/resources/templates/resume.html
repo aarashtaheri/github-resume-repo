@@ -7,19 +7,25 @@
 <body>
     <p th:text="'Hello1, ' + ${name} + '!'" />
 
+    <p th:text="'No of Repositories ' + ${#lists.size(repos)} + '!'" />
+    
+    <p th:text="'Username ' + ${{user.login}}" />
+    <p th:text="'URL ' + ${{user.blog}} + '!'" />
+    
+    
 	<table>
 		<thead>
           <tr>
-            <th >Type</th>
-            <th >Id</th>
-            <th >Quote</th>
+            <th >xxx</th>
+            <th >yyy</th>
+            <th >zzz</th>
           </tr>
         </thead>	
         <tbody>
-          <tr th:each="quote : ${allQuotes}">
-          	<td th:text="${{quote.type}}">13/01/2011</td>
-          	<td th:text="${{quote.value.id}}">13/01/2011</td>
-          	<td th:text="${{quote.value.quote}}">13/01/2011</td>
+          <tr th:each="repo : ${repos}">
+          	<td th:text="${{repo.name}}">13/01/2011</td>
+          	<td th:text="${{repo.url}}">13/01/2011</td>
+          	<td th:text="${{repo.description}}">13/01/2011</td>
           </tr>
         </tbody>
 	</table>
