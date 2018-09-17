@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <p th:text="'Hello1, ' + ${name} + '!'" />
+
+	<table>
+		<thead>
+          <tr>
+            <th >Type</th>
+            <th >Id</th>
+            <th >Quote</th>
+          </tr>
+        </thead>	
+        <tbody>
+          <tr th:each="quote : ${allQuotes}">
+          	<td th:text="${{quote.type}}">13/01/2011</td>
+          	<td th:text="${{quote.value.id}}">13/01/2011</td>
+          	<td th:text="${{quote.value.quote}}">13/01/2011</td>
+          </tr>
+        </tbody>
+	</table>
+</body>
+</html>
