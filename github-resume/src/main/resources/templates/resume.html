@@ -5,20 +5,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <p th:text="'Hello1, ' + ${githubAccount} + '!'" />
 
-    <p th:text="'No of Repositories ' + ${#lists.size(repos)} + '!'" />
-    
-    <p th:text="'Username ' + ${{user.login}}" />
-    <p th:text="'URL ' + ${{user.blog}} + '!'" />
-    
-    
+    <p th:text="'Username: ' + ${{user.login}}" />
+    <p th:text="'Users website: ' + ${{user.blog}}" />
+
+    <p th:text="'No of Repositories ' + ${#lists.size(repos)} " />
+        
 	<table>
 		<thead>
           <tr>
-            <th >xxx</th>
-            <th >yyy</th>
-            <th >zzz</th>
+            <th >Name</th>
+            <th >URL</th>
+            <th >Description</th>
           </tr>
         </thead>	
         <tbody>
