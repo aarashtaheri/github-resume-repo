@@ -65,4 +65,34 @@ public class ResumeController2 {
 //    	return list;
 //
 //    }
+	
+//	@ModelAttribute("nodes")
+//	public List<NodeDTO> populateNodes() {
+//		RestTemplate restTemplate = new RestTemplate();
+//		ResponseEntity<List<NodeDTO>> response = restTemplate.exchange("https://api.github.com/users/mxcl/starred",
+//				HttpMethod.GET, null, new ParameterizedTypeReference<List<NodeDTO>>() {
+//				});
+//		List<NodeDTO> employees = response.getBody();
+//		return employees;
+//	}
+//
+//	@ModelAttribute("repos")
+//	public List<RepoDTO> populateRepos() {
+//		RestTemplate restTemplate = new RestTemplate();
+//		ResponseEntity<List<RepoDTO>> response = restTemplate.exchange("https://api.github.com/users/Frizlab/repos",
+//				HttpMethod.GET, null, new ParameterizedTypeReference<List<RepoDTO>>() {
+//				});
+//		return response.getBody();
+//	}
+//
+//	@ModelAttribute("user")
+//	public UserDTO populateUserinfo() {
+//		String urlAPI = (new StringBuilder(githubAPIBaseUrl)).append(githubAccount).toString();
+//		LOG.info("Querying API: {}", urlAPI);
+//		RestTemplate restTemplate = new RestTemplate();
+//		ResponseEntity<UserDTO> response = restTemplate.exchange(urlAPI, HttpMethod.GET, null,
+//				new ParameterizedTypeReference<UserDTO>() {
+//				});
+//		return response.getBody();
+//	}
 }
