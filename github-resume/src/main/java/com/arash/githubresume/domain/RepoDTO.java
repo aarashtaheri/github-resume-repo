@@ -1,4 +1,4 @@
-package com.arash.githubresume;
+package com.arash.githubresume.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
