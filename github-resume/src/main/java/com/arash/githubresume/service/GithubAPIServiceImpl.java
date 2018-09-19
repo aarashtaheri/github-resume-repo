@@ -6,6 +6,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.arash.githubresume.controller.ResumeController;
@@ -21,11 +22,18 @@ public class GithubAPIServiceImpl implements GithubAPIService {
 
 	private <T> T queryAPI(String url) {
 		LOG.info("Querying API: {}", url);
-	
-		RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<T> response = restTemplate.exchange(url, HttpMethod.GET, null,
-				new ParameterizedTypeReference<T>() {
-				});
+					
+		ResponseEntity<T> response;
+		try {
+			RestTemplate restTemplate = new RestTemplate();
+			response = restTemplate.exchange(url, HttpMethod.GET, null,
+					new ParameterizedTypeReference<T>() {
+					});
+		} catch (RestClientException e) {
+			LOG.error("Error by querying the endpoint {}", url);
+			throw e;
+		}
+		
 		return response.getBody();
 	}
 

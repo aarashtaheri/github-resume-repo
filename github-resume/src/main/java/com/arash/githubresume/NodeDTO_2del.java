@@ -2,7 +2,7 @@ package com.arash.githubresume;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class NodeDTO {
+public class NodeDTO_2del {
 	
 	@JsonProperty("name")
 	private String name;

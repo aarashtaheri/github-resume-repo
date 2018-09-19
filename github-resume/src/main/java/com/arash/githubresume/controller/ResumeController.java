@@ -14,16 +14,14 @@ import com.arash.githubresume.service.GithubAPIService;
 public class ResumeController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ResumeController.class);
-	
+
 	@Autowired
 	GithubAPIService queryGithubAPIService;
 
 	@GetMapping("/show")
 	public String greeting(@RequestParam(value = "githubAccount", required = true) String githubAccount, Model model) {
-		
 		model.addAttribute("user", queryGithubAPIService.queryUsersData(githubAccount));
 		model.addAttribute("repos", queryGithubAPIService.queryReposData(githubAccount));
-
 		return "resume";
 	}
 

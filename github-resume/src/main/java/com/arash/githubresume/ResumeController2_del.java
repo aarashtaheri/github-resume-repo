@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 @Controller
-public class ResumeController2 {
+public class ResumeController2_del {
 //
 //    @GetMapping("/show")
 //    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
