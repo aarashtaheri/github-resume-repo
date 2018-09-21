@@ -1,7 +1,12 @@
 package com.arash.githubresume.service;
 
+import java.util.List;
+
+import com.arash.githubresume.domain.RepoDTO;
+import com.arash.githubresume.domain.UserDTO;
+
 public interface GithubAPIService {
 
-	public <T> T queryUsersData(String githubAccount);
-	public <T> T queryReposData(String githubAccount);
+	public UserDTO queryUsersData(String githubAccount);
+	public List<RepoDTO> queryReposData(String githubAccount);
 }

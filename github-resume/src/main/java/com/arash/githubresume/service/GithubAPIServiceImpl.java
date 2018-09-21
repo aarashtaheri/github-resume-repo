@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.arash.githubresume.controller.ResumeController;
 import com.arash.githubresume.domain.RepoDTO;
+import com.arash.githubresume.domain.UserDTO;
 
 @Service
 public class GithubAPIServiceImpl implements GithubAPIService {
@@ -41,24 +42,38 @@ public class GithubAPIServiceImpl implements GithubAPIService {
 	}
 	
 	@Override
-	public <T> T queryUsersData(String githubAccount) {
+	public UserDTO queryUsersData(String githubAccount) {
 		String userAPI = (new StringBuilder(GITHUB_USERS_API))
 				.append(SLASH).append(githubAccount)
 				.toString();
-		return queryAPI(userAPI);
+		
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<UserDTO> response  = restTemplate.getForEntity(userAPI, UserDTO.class);
+		
+		return response.getBody();
 	}
 
 	@Override
-	public <T> T queryReposData(String githubAccount) {
+	public List<RepoDTO> queryReposData(String githubAccount) {
 		String reposAPI = (new StringBuilder(GITHUB_USERS_API)).append(SLASH)
 				.append(githubAccount).append(SLASH).append(REPOS)
 				.toString();
 		
-		//Object x = queryAPI(reposAPI);
-		//calculatePercentSizes(response.getBody());
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<RepoDTO>> response = restTemplate.exchange(reposAPI, HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<RepoDTO>>() {
+				});
 
-		List<RepoDTO> repos = queryAPI(reposAPI);
-		return queryAPI(reposAPI);
+		List<RepoDTO> repos = response.getBody();
+		repos = calculatePercentSize(repos);
+		
+		return repos;
+	}
+
+	private List<RepoDTO> calculatePercentSize(List<RepoDTO> repos) {
+		int sum = repos.stream().mapToInt(r -> r.getSize()).sum();
+		repos.stream().forEach(r -> r.setPercentSize(100.0 * r.getSize()/sum));
+		return repos;
 	}
 
 }
