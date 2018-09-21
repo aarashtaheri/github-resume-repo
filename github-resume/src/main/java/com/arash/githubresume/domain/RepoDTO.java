@@ -1,5 +1,6 @@
 package com.arash.githubresume.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class RepoDTO {
@@ -12,6 +13,15 @@ public class RepoDTO {
 
 	@JsonProperty("description")
 	private String description;
+	
+	@JsonProperty("size")
+	private Integer size;
+
+	/**
+	 * indicates the percent size of this Repository compared to the whole Repositories
+	 */
+	@JsonIgnore
+	private double percentSize;
 
 	public String getName() {
 		return name;
@@ -35,6 +45,22 @@ public class RepoDTO {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public double getPercentSize() {
+		return percentSize;
+	}
+
+	public void setPercentSize(double percentSize) {
+		this.percentSize = percentSize;
+	}
+	
+	public Integer getSize() {
+		return size;
+	}
+
+	public void setSize(Integer size) {
+		this.size = size;
 	}
 
 

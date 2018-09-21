@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.arash.githubresume.service.GithubAPIService;
+import com.arash.githubresume.service.GithubAPIService2;
 
 @Controller
 public class ResumeController {
@@ -16,7 +16,7 @@ public class ResumeController {
 	private static final Logger LOG = LoggerFactory.getLogger(ResumeController.class);
 
 	@Autowired
-	GithubAPIService queryGithubAPIService;
+	GithubAPIService2 queryGithubAPIService;
 
 	@GetMapping("/show")
 	public String greeting(@RequestParam(value = "githubAccount", required = true) String githubAccount, Model model) {

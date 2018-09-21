@@ -16,14 +16,16 @@
           <tr>
             <th >Name</th>
             <th >URL</th>
+            <th >%Size</th>
             <th >Description</th>
           </tr>
         </thead>	
         <tbody>
           <tr th:each="repo : ${repos}">
-          	<td th:text="${{repo.name}}">13/01/2011</td>
-          	<td th:text="${{repo.url}}">13/01/2011</td>
-          	<td th:text="${{repo.description}}">13/01/2011</td>
+          	<td th:text="${{repo.name}}">name</td>
+          	<td th:text="${{repo.url}}">url</td>
+          	<td th:text="${#numbers.formatDecimal(repo.percentSize, 0, 2)}">percentSize</td>
+          	<td th:text="${{repo.description}}">description</td>
           </tr>
         </tbody>
 	</table>
